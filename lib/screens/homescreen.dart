@@ -68,9 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 activeIcon: Activeicon(image: "assets/images/booktap.png"),
               ),
               BottomNavigationBarItem(
-                icon: Image(image: AssetImage("assets/images/Sebha.png")),
+                icon: Image(image: AssetImage("assets/images/sebha.png")),
                 label: "Sebha",
-                activeIcon: Activeicon(image: "assets/images/Sebha.png"),
+                activeIcon: Activeicon(image: "assets/images/sebha.png"),
               ),
               BottomNavigationBarItem(
                 icon: Image(image: AssetImage("assets/images/radiotap.png")),
