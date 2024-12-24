@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami_program/screens/homescreen.dart';
 
+import 'classes/theme.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -12,6 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
+      darkTheme: MyDarkTheme.darkTheme,
+
     );
   }
 }

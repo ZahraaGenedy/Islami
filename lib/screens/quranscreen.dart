@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_program/classes/colors.dart';
+
 class QuranScreen extends StatefulWidget {
   static const String name = "sebhascreen";
 
@@ -27,20 +28,17 @@ class _QuranScreenState extends State<QuranScreen> {
                   borderSide: BorderSide(
                     color: AppColors.primaryDark,
                     width: 2,
-                  )
-              ) ,
+                  )),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                   borderSide: BorderSide(
                     color: AppColors.primaryDark,
                     width: 2,
-                  )
-              ) ,
+                  )),
               prefixIcon: const ImageIcon(
                   color: AppColors.primaryDark,
-                  AssetImage("assets/images/search-icon.png")
-              ),
-              hintText: 'Sura Name' ,
+                  AssetImage("assets/images/search-icon.png")),
+              hintText: 'Sura Name',
               hintStyle: TextStyle(
                 color: AppColors.primaryDark,
               ),

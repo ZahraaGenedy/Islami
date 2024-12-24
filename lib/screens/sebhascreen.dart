@@ -89,7 +89,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
                             fontWeight: FontWeight.bold,
                             fontFamily: "Raleway",
                             fontSize:
-                            islast ? screenWidth * 0.07 : screenWidth * 0.1,
+                                islast ? screenWidth * 0.07 : screenWidth * 0.1,
                           ),
                         ),
                       ),
