@@ -71,7 +71,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
                     ),
                   ),
                   Positioned(
-                    top: islast ? screenHeight * 0.08 : screenHeight * 0.18,
+                    top: islast ? screenHeight * 0.08 : screenHeight * 0.15,
                     left: screenWidth * 0.04,
                     right: screenWidth * 0.04,
                     child: Column(
@@ -91,7 +91,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
                               fontFamily: "Raleway",
                               fontSize: islast
                                   ? screenHeight * 0.035
-                                  : screenHeight * 0.06,
+                                  : screenHeight * 0.05,
                             ),
                           ),
                         ),
