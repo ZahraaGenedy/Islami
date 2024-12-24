@@ -41,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         images[currentpage],
         width: double.infinity,
         height: double.infinity,
+        fit: BoxFit.cover,
       ),
       Scaffold(
         backgroundColor: Colors.transparent,
