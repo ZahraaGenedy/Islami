@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_program/screens/homescreen.dart';
+import 'package:islami_program/screens/onboarding.dart';
 
 import 'classes/theme.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: OnboardingScreen(),
       darkTheme: MyDarkTheme.darkTheme,
 
     );
