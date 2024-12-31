@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:islami_program/screens/hadithscreen.dart';
-import 'package:islami_program/screens/quranscreen.dart';
-import 'package:islami_program/screens/radioscreen.dart';
-import 'package:islami_program/screens/sebhascreen.dart';
-import 'package:islami_program/screens/timescreen.dart';
+import 'package:islami_program/screens/quranTap/quranscreen.dart';
+import 'package:islami_program/screens/radioTap/radioscreen.dart';
+import 'package:islami_program/screens/sebhaTap/sebhascreen.dart';
+import 'package:islami_program/screens/timeTap/timescreen.dart';
 
 import '../Widgets/activeIcon.dart';
 import '../classes/colors.dart';
+import 'hadithTap/hadithscreen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String name = "sebhascreen";
