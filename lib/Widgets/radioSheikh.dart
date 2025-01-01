@@ -27,7 +27,7 @@ class Radiosheikh extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
             child: Text(
-              "Radio $sheikhName",
+              "$sheikhName",
               style: TextStyle(
                   fontSize: screenWidth * 0.044, fontWeight: FontWeight.bold),
             ),
