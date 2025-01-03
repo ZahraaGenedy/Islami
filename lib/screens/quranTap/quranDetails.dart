@@ -1,5 +1,9 @@
-class QuranDetails{
-  static const List<String> arabicQuranSuras = [
+class QuranDetailsModel{
+  String arabicQuranSuras;
+  String englishQuranSurahs ;
+  String AyaNumber;
+  int index;
+  static const List<String> arabicQuranSurasList = [
     "الفاتحه",
     "البقرة",
     "آل عمران",
@@ -115,7 +119,7 @@ class QuranDetails{
     "الفلق",
     "الناس"
   ];
-  static const List<String> englishQuranSurahs = [
+  static const List<String> englishQuranSurahsList  = [
     "Al-Fatiha",
     "Al-Baqarah",
     "Aal-E-Imran",
@@ -231,7 +235,7 @@ class QuranDetails{
     "Al-Falaq",
     "An-Nas"
   ];
-  static const List<String> AyaNumber = [
+  static const List<String> AyaNumberList  = [
     '7',
     '286',
     '200',
@@ -347,4 +351,6 @@ class QuranDetails{
     '5',
     '6'
   ];
+  QuranDetailsModel({required this.englishQuranSurahs ,required this.AyaNumber , required this.arabicQuranSuras , required this.index});
+
 }

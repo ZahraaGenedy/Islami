@@ -69,7 +69,7 @@ class _RadioScreenState extends State<RadioScreen> {
                   Radiosheikh(sheikhName: "Addokali Mohammed Alalim", on: false),
                   Radiosheikh(sheikhName: "Ibrahim Al-Asdar", on: false)
                 ]
-            ),6
+            ),
 
           ],
         ),

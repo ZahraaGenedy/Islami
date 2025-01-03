@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami_program/classes/colors.dart';
 import 'package:islami_program/screens/quranTap/quranDetails.dart';
 import 'package:islami_program/screens/quranTap/quranWidget.dart';
+import 'package:islami_program/screens/quranTap/suraDetails.dart';
 
 class QuranScreen extends StatefulWidget {
   static const String name = "sebhascreen";
@@ -64,14 +65,26 @@ class _QuranScreenState extends State<QuranScreen> {
                   decoration: BoxDecoration(color: Colors.white),
                 ),
               ),
-              itemBuilder: (context, index) => Quranwidget(
-                suraArabName: QuranDetails.arabicQuranSuras[index],
-                suraEngName: QuranDetails.englishQuranSurahs[index],
-                suraNumber: QuranDetails.AyaNumber[index],
-                suraIndex: index+1,
-
+              itemBuilder: (context, index) => InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Suradetails.name,
+                      arguments: QuranDetailsModel(
+                          englishQuranSurahs: QuranDetailsModel.englishQuranSurahsList[index],
+                          AyaNumber: QuranDetailsModel.AyaNumberList[index],
+                          arabicQuranSuras: QuranDetailsModel.arabicQuranSurasList[index],
+                          index: index));
+                },
+                child: Quranwidget(
+                  suraModel: QuranDetailsModel(
+                      englishQuranSurahs:
+                          QuranDetailsModel.englishQuranSurahsList[index],
+                      AyaNumber: QuranDetailsModel.AyaNumberList[index],
+                      arabicQuranSuras:
+                          QuranDetailsModel.arabicQuranSurasList[index],
+                      index: index + 1),
+                ),
               ),
-              itemCount: QuranDetails.AyaNumber.length,
+              itemCount: QuranDetailsModel.AyaNumberList.length,
             ),
           )
         ],
