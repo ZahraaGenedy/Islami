@@ -28,7 +28,7 @@ class _HadithdetailsState extends State<Hadithdetails> {
         ),
         centerTitle: true,
       ),
-      body: Stack(alignment: Alignment.center, children: [
+       body: Stack(alignment: Alignment.center, children: [
         Positioned.fill(
           child: Image.asset(
             "assets/images/detailsbg.png",

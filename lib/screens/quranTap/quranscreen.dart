@@ -13,6 +13,26 @@ class QuranScreen extends StatefulWidget {
 }
 
 class _QuranScreenState extends State<QuranScreen> {
+  String textSearch = "";
+  void getQuranModel() {
+    for (int i = 0; i < 114; i++) {
+      QuranDetailsModel.quranList.add(QuranDetailsModel(
+          englishQuranSurahs: QuranDetailsModel.englishQuranSurahsList[i],
+          ayaNumber: QuranDetailsModel.ayaNumberList[i],
+          arabicQuranSuras: QuranDetailsModel.arabicQuranSurasList[i],
+          suraName: "${i + 1}.txt"));
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getQuranModel();
+  }
+
+  List<QuranDetailsModel> filterList = QuranDetailsModel.quranList;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,6 +44,9 @@ class _QuranScreenState extends State<QuranScreen> {
         children: [
           Center(child: Image.asset("assets/images/Logo.png")),
           TextFormField(
+            style: TextStyle(
+              color: Colors.white,
+            ),
             cursorColor: AppColors.whiteColor,
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
@@ -46,6 +69,17 @@ class _QuranScreenState extends State<QuranScreen> {
                 color: AppColors.primaryDark,
               ),
             ),
+            onChanged: (Text){
+              textSearch = Text;
+               filterList = QuranDetailsModel.quranList.where((quranModel){
+                return quranModel.arabicQuranSuras.contains(textSearch) ||
+                    quranModel.englishQuranSurahs.toLowerCase().contains(textSearch.toLowerCase());
+
+              }).toList();
+               setState(() {
+
+               });
+            },
           ),
           Text(
             "Most Recently",
@@ -68,25 +102,14 @@ class _QuranScreenState extends State<QuranScreen> {
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
                   Navigator.of(context).pushNamed(Suradetails.name,
-                      arguments: QuranDetailsModel(
-                          englishQuranSurahs:
-                              QuranDetailsModel.englishQuranSurahsList[index],
-                          AyaNumber: QuranDetailsModel.AyaNumberList[index],
-                          arabicQuranSuras:
-                              QuranDetailsModel.arabicQuranSurasList[index],
-                          index: index));
+                      arguments: filterList[index]);
                 },
                 child: Quranwidget(
-                  suraModel: QuranDetailsModel(
-                      englishQuranSurahs:
-                          QuranDetailsModel.englishQuranSurahsList[index],
-                      AyaNumber: QuranDetailsModel.AyaNumberList[index],
-                      arabicQuranSuras:
-                          QuranDetailsModel.arabicQuranSurasList[index],
-                      index: index + 1),
+                  index: index,
+                  suraModel: filterList[index],
                 ),
               ),
-              itemCount: QuranDetailsModel.AyaNumberList.length,
+              itemCount: filterList.length
             ),
           )
         ],

@@ -17,11 +17,12 @@ class _SuradetailsState extends State<Suradetails> {
   String suraContentjoin = "";
   int? selectedIndex;
 
+
   @override
   Widget build(BuildContext context) {
     var arg = ModalRoute.of(context)!.settings.arguments as QuranDetailsModel;
     if (verses.isEmpty && suraContentjoin.isEmpty) {
-      getFileData(arg.index);
+      getFileData(arg.suraName);
     }
 
     return Scaffold(
@@ -117,9 +118,9 @@ class _SuradetailsState extends State<Suradetails> {
     );
   }
 
-  void getFileData(int index) async {
+  void getFileData(String suraName) async {
     String content =
-        await rootBundle.loadString("assets/files/${index + 1}.txt");
+        await rootBundle.loadString("assets/files/$suraName");
     List<String> suraLine = content.split("\n");
     String joinedContent = suraLine
         .asMap()

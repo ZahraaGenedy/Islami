@@ -3,7 +3,8 @@ import 'package:islami_program/screens/quranTap/quranDetailsModel.dart';
 
 class Quranwidget extends StatelessWidget {
   QuranDetailsModel suraModel;
-  Quranwidget({super.key, required this.suraModel});
+  int index;
+  Quranwidget({super.key, required this.suraModel, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class Quranwidget extends StatelessWidget {
             children: [
               Image(image: AssetImage("assets/images/Sura Number.png")),
               Text(
-                "${suraModel.index}",
+                "${index+1}",
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -38,7 +39,7 @@ class Quranwidget extends StatelessWidget {
                               fontSize: 20,
                               fontWeight: FontWeight.bold)),
                       Text(
-                        "${suraModel.AyaNumber} verses",
+                        "${suraModel.ayaNumber} verses",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,
