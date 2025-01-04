@@ -15,7 +15,7 @@ class QuranScreen extends StatefulWidget {
 class _QuranScreenState extends State<QuranScreen> {
   String textSearch = "";
   void getQuranModel() {
-    for (int i = 0; i < 114; i++) {
+    for (int i = 0; i < 114 ; i++) {
       QuranDetailsModel.quranList.add(QuranDetailsModel(
           englishQuranSurahs: QuranDetailsModel.englishQuranSurahsList[i],
           ayaNumber: QuranDetailsModel.ayaNumberList[i],
@@ -69,8 +69,8 @@ class _QuranScreenState extends State<QuranScreen> {
                 color: AppColors.primaryDark,
               ),
             ),
-            onChanged: (Text){
-              textSearch = Text;
+            onChanged: (text){
+              textSearch = text;
                filterList = QuranDetailsModel.quranList.where((quranModel){
                 return quranModel.arabicQuranSuras.contains(textSearch) ||
                     quranModel.englishQuranSurahs.toLowerCase().contains(textSearch.toLowerCase());
