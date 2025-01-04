@@ -29,10 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<String> images = [
     "assets/images/Background.png",
-    "assets/images/Background1.png",
+    "assets/images/Background4.png",
     "assets/images/Background2.png",
     "assets/images/Background1.png",
-    "assets/images/Background1.png"
+    "assets/images/Background1.png",
   ];
   @override
   Widget build(BuildContext context) {

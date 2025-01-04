@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_program/classes/colors.dart';
-import 'package:islami_program/screens/quranTap/quranDetails.dart';
+import 'package:islami_program/screens/quranTap/quranDetailsModel.dart';
 import 'package:flutter/services.dart';
 
 class Suradetails extends StatefulWidget {
@@ -15,6 +15,7 @@ class Suradetails extends StatefulWidget {
 class _SuradetailsState extends State<Suradetails> {
   List<String> verses = [];
   String suraContentjoin = "";
+  int? selectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -34,80 +35,91 @@ class _SuradetailsState extends State<Suradetails> {
         ),
         centerTitle: true,
       ),
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          Positioned.fill(
-            child: Image.asset(
-              "assets/images/detailsbg.png",
-              fit: BoxFit.fill,
-            ),
+      body: Stack(alignment: Alignment.center, children: [
+        Positioned.fill(
+          child: Image.asset(
+            "assets/images/detailsbg.png",
+            fit: BoxFit.fill,
           ),
-          Column(
-            children: [
-              Padding(
+        ),
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Text(
+                "${arg.arabicQuranSuras}",
+                style: TextStyle(
+                  color: AppColors.primaryDark,
+                  fontSize: 24.0,
+                ),
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
                 padding: const EdgeInsets.all(18.0),
                 child: Text(
-                  "${arg.arabicQuranSuras}",
+                  suraContentjoin,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: AppColors.primaryDark,
-                    fontSize: 24.0,
-                  ),
+                      color: AppColors.primaryDark, fontSize: 18.0, height: 2),
+                  textDirection: TextDirection.rtl,
                 ),
               ),
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Text(
-                    suraContentjoin,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: AppColors.primaryDark,
-                      fontSize: 18.0,
-                    ),
-                    textDirection: TextDirection.rtl,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: verses.isEmpty
-                    ? Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.primaryDark,
-                  ),
-                )
-                    : ListView.builder(
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 6),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          border: Border.all(color: AppColors.primaryDark),
-                          borderRadius: BorderRadius.circular(5)
-                        ),
-                        child: Text(
-                          "${verses[index]}[${index + 1}]",
-                          style: TextStyle(color: AppColors.primaryDark),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.center,
-                        ),
+            ),
+            Expanded(
+              child: verses.isEmpty
+                  ? Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.primaryDark,
                       ),
-                    );
-                  },
-                  itemCount: verses.length,
-                ),
-              ),
-            ],
-          ),
-
-        ]),
+                    )
+                  : ListView.builder(
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20.0, vertical: 6),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20.0, vertical: 6),
+                              decoration: BoxDecoration(
+                                color: selectedIndex == index
+                                    ? AppColors.primaryDark
+                                    : Colors.transparent,
+                                border:
+                                    Border.all(color: AppColors.primaryDark),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Text(
+                                "${verses[index]}[${index + 1}]",
+                                style: TextStyle(
+                                    color: selectedIndex == index
+                                        ? AppColors.black
+                                        : AppColors.primaryDark),
+                                textDirection: TextDirection.rtl,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      itemCount: verses.length,
+                    ),
+            ),
+          ],
+        ),
+      ]),
     );
   }
 
   void getFileData(int index) async {
-    String content = await rootBundle.loadString("assets/files/${index + 1}.txt");
+    String content =
+        await rootBundle.loadString("assets/files/${index + 1}.txt");
     List<String> suraLine = content.split("\n");
     String joinedContent = suraLine
         .asMap()

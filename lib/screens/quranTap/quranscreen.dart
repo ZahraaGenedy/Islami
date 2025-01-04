@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_program/classes/colors.dart';
-import 'package:islami_program/screens/quranTap/quranDetails.dart';
+import 'package:islami_program/screens/quranTap/quranDetailsModel.dart';
 import 'package:islami_program/screens/quranTap/quranWidget.dart';
 import 'package:islami_program/screens/quranTap/suraDetails.dart';
 
@@ -69,9 +69,11 @@ class _QuranScreenState extends State<QuranScreen> {
                 onTap: () {
                   Navigator.of(context).pushNamed(Suradetails.name,
                       arguments: QuranDetailsModel(
-                          englishQuranSurahs: QuranDetailsModel.englishQuranSurahsList[index],
+                          englishQuranSurahs:
+                              QuranDetailsModel.englishQuranSurahsList[index],
                           AyaNumber: QuranDetailsModel.AyaNumberList[index],
-                          arabicQuranSuras: QuranDetailsModel.arabicQuranSurasList[index],
+                          arabicQuranSuras:
+                              QuranDetailsModel.arabicQuranSurasList[index],
                           index: index));
                 },
                 child: Quranwidget(
