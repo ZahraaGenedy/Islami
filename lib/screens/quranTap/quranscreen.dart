@@ -15,12 +15,14 @@ class QuranScreen extends StatefulWidget {
 class _QuranScreenState extends State<QuranScreen> {
   String textSearch = "";
   void getQuranModel() {
+
     for (int i = 0; i < 114 ; i++) {
-      QuranDetailsModel.quranList.add(QuranDetailsModel(
-          englishQuranSurahs: QuranDetailsModel.englishQuranSurahsList[i],
-          ayaNumber: QuranDetailsModel.ayaNumberList[i],
-          arabicQuranSuras: QuranDetailsModel.arabicQuranSurasList[i],
-          suraName: "${i + 1}.txt"));
+        QuranDetailsModel.quranList.add(QuranDetailsModel(
+            englishQuranSurahs: QuranDetailsModel.englishQuranSurahsList[i],
+            ayaNumber: QuranDetailsModel.ayaNumberList[i],
+            arabicQuranSuras: QuranDetailsModel.arabicQuranSurasList[i],
+            suraName: "${i + 1}.txt"));
+
     }
   }
 
@@ -28,7 +30,8 @@ class _QuranScreenState extends State<QuranScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getQuranModel();
+    if(QuranDetailsModel.quranList.isEmpty){
+    getQuranModel();}
   }
 
   List<QuranDetailsModel> filterList = QuranDetailsModel.quranList;
